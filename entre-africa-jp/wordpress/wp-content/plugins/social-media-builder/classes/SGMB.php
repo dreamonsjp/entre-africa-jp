@@ -39,16 +39,25 @@ class SGMB
 					$sgmbPosition = 'sgmb-right';
 					break;
 			}
-			if($data['showButtonsOnEveryPost'] == 'on') {
-				foreach ($postsTitleInData as  $postTitleInData) {
-					if(!is_home() && $postTitle == $postTitleInData) {
-						$content .= "<div class = 'socialMediaOnEveryPost'>";
-						$content .= @$textBeforeSocialMedia;
-						$content .= do_shortcode( "[sgmb id=$id]" );
-						$content .= "</div>";
-						$content .= '<script> jQuery(".socialMediaOnEveryPost").addClass("'.$sgmbPosition.'") </script>';
-					}
+			if(@$data['showButtonsOnEveryPost'] == 'on') {
+				if(@$data['showOnAllPost'] == 'on') {
+					$content .= "<div class = 'socialMediaOnEveryPost'>";
+					$content .= @$textBeforeSocialMedia;
+					$content .= do_shortcode( "[sgmb id=$id]" );
+					$content .= "</div>";
+					$content .= '<script> jQuery(".socialMediaOnEveryPost").addClass("'.$sgmbPosition.'") </script>';					
 				}
+				else {
+					foreach ($postsTitleInData as  $postTitleInData) {
+						if(!is_home() && $postTitle == $postTitleInData) {
+							$content .= "<div class = 'socialMediaOnEveryPost'>";
+							$content .= @$textBeforeSocialMedia;
+							$content .= do_shortcode( "[sgmb id=$id]" );
+							$content .= "</div>";
+							$content .= '<script> jQuery(".socialMediaOnEveryPost").addClass("'.$sgmbPosition.'") </script>';
+						}
+					}
+				}				
 			}
 		}
 		return $content;

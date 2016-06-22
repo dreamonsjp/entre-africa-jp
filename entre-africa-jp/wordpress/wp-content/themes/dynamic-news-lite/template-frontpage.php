@@ -9,6 +9,9 @@ Template Name: Magazine Homepage
 	$theme_options = dynamicnews_theme_options();
 ?>
 	
+	<div id="custom-header">
+		<img src="http://africa.blendsystems.jp/wp-content/uploads/2016/05/cropped-faces.jpg">
+	</div>
 	<div id="wrap" class="container clearfix template-frontpage">
 		
 		<section id="content" class="primary" role="main">

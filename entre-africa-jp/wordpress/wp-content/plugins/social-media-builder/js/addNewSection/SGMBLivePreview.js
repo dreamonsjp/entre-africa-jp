@@ -2,6 +2,7 @@ function SGMBLivePreview()
 {
 	this.widget = '';
 	this.roundButton = '';
+	this.betweenSize = '1px'
 	this.icon = 'default';
 	this.iconEffect = jQuery("[name='iconsEffect']").val();
 	this.buttonsEffect = jQuery("[name='buttonsEffect']").val();
@@ -27,17 +28,20 @@ SGMBLivePreview.prototype.init = function()
 	jQuery('.options-for-buttons-fixed-position').hide();
 	this.roundButton = jQuery('[name = roundButton]');
 	this.showLabels = jQuery('[name = showLabels]');
+	this.betweenSize = jQuery('.sgmb-betweenButtons').val();
 
 	jQuery(".js-social-btn-text").bind('input', function() {
 		var btnText = jQuery(this).val();
 		var btnName = jQuery(this).attr('data-social-button');
 		that.widget.changeButtonText(btnText, btnName);
 		that.widget.changeToRoundButtons(that.roundButton.is(':checked'));
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('[name = roundButton]').bind('change', function() {
 		var inputValue = jQuery(this).is(':checked');
  		that.widget.changeToRoundButtons(inputValue);
+ 		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('[name = showLabels]').bind('change', function() {
@@ -49,6 +53,7 @@ SGMBLivePreview.prototype.init = function()
 		that.widget.fbLikeParse();
 		that.widget.twitterFollowLoad();
 		that.widget.changeAttrOfButton();
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('[name = showCounts]').bind('change', function() {
@@ -60,6 +65,7 @@ SGMBLivePreview.prototype.init = function()
 		that.widget.fbLikeParse();
 		that.widget.twitterFollowLoad();
 		that.widget.changeAttrOfButton();
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('[name = showButtonsAsList]').bind('change', function() {
@@ -72,6 +78,11 @@ SGMBLivePreview.prototype.init = function()
  		that.widget.showButtonsAsList(inputValue);
 	});
 
+	jQuery('[name = showOnAllPost]').bind('change', function() {
+		var inputValue = jQuery(this).is(':checked');
+ 		that.widget.disabledSelectPostsOption(inputValue);
+	});
+	
 	jQuery('[name = showButtonsOnEveryPost]').bind('change', function() {
 		var inputValue = jQuery(this).is(':checked');
 		if(inputValue == true) {
@@ -112,6 +123,7 @@ SGMBLivePreview.prototype.init = function()
 		that.widget.changeToRoundButtons(that.roundButton.is(':checked'));
 		that.widget.changeButtonsEffect(that.buttonsEffect);
 		that.widget.changeIconsEffect(that.iconEffect);
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('.js-social-btn-status').on('dragComplete', function(e){
@@ -123,12 +135,14 @@ SGMBLivePreview.prototype.init = function()
 	jQuery("[name='fbLikeLayout']").bind('change',function() {
 		var fbLikeLayout = jQuery(this).val();
 		that.widget.setFbLikeLayout(fbLikeLayout);
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery("[name='fbLikeActionType']").bind('change',function() {
 		var fbLikeActionType = jQuery(this).val();
 		that.widget.setFbLikeActionType(fbLikeActionType);
 		that.widget.twitterFollowLoad();
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery('.js-social-btn-status').on('socialButtonHide', function(e){
@@ -138,14 +152,21 @@ SGMBLivePreview.prototype.init = function()
 		that.widget.changeToRoundButtons(that.roundButton.is(':checked'));
 		that.widget.changeButtonsEffect(that.buttonsEffect);
 		that.widget.changeIconsEffect(that.iconEffect);
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
 	jQuery("[name='sgmbSocialButtonSize']").bind('change', function() {
 		var fontSize = jQuery(this).val();
 		that.widget.changeButtonSize(fontSize);
 		that.widget.changeToRoundButtons(that.roundButton.is(':checked'));
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
 	});
 
+	jQuery("[name='betweenButtons']").bind('input', function() {
+		that.betweenSize = jQuery(this).val();
+		that.widget.changeBetweenButtonsSize(that.betweenSize);
+	});
+	
 	jQuery("[name='sgmbDropdownLabelFontSize']").bind('change', function() {
 		var fontSize = jQuery(this).val();
 		that.widget.changeDropdownLabelSize(fontSize);

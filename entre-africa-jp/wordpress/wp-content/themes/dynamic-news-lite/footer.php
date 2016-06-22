@@ -1,3 +1,4 @@
+
 	<?php do_action('dynamicnews_before_footer'); ?>
 	
 	<div id="footer-wrap">

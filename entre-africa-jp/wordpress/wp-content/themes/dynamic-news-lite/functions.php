@@ -10,11 +10,18 @@ function dynamicnews_enqueue_scripts() {
 	// Get Theme Options from Database
 	$theme_options = dynamicnews_theme_options();
 	
+	// Get Theme Version
+	$theme_version = wp_get_theme()->get( 'Version' );
+	
 	// Register and Enqueue Stylesheet
-	wp_enqueue_style( 'dynamicnewslite-stylesheet', get_stylesheet_uri() );
+	wp_enqueue_style( 'dynamicnewslite-stylesheet', get_stylesheet_uri(), array(), $theme_version );
 	
 	// Register Genericons
-	wp_enqueue_style( 'dynamicnewslite-genericons', get_template_directory_uri() . '/css/genericons/genericons.css' );
+	wp_enqueue_style( 'dynamicnewslite-genericons', get_template_directory_uri() . '/css/genericons/genericons.css', array(), '3.4.1' );
+	
+	// Register and Enqueue HTML5shiv to support HTML5 elements in older IE versions
+	wp_enqueue_script( 'dynamicnewslite-html5shiv', get_template_directory_uri() . '/js/html5shiv.min.js', array(), '3.7.3' );
+	wp_script_add_data( 'dynamicnewslite-html5shiv', 'conditional', 'lt IE 9' );
 
 	// Register and Enqueue FlexSlider JS and CSS if necessary
 	if ( ( isset($theme_options['slider_activated_blog']) and $theme_options['slider_activated_blog'] == true )
@@ -24,7 +31,7 @@ function dynamicnews_enqueue_scripts() {
 		wp_enqueue_style( 'dynamicnewslite-flexslider', get_template_directory_uri() . '/css/flexslider.css' );
 
 		// FlexSlider JS
-		wp_enqueue_script( 'dynamicnewslite-jquery-flexslider', get_template_directory_uri() .'/js/jquery.flexslider-min.js', array('jquery'), '2.6.0' );
+		wp_enqueue_script( 'dynamicnewslite-jquery-flexslider', get_template_directory_uri() .'/js/jquery.flexslider-min.js', array( 'jquery' ), '2.6.0' );
 
 		// Register and enqueue slider.js
 		wp_enqueue_script( 'dynamicnewslite-jquery-frontpage_slider', get_template_directory_uri() .'/js/slider.js', array( 'dynamicnewslite-jquery-flexslider' ), '2.6.0' );
@@ -32,7 +39,7 @@ function dynamicnews_enqueue_scripts() {
 	endif;
 
 	// Register and enqueue navigation.js
-	wp_enqueue_script( 'dynamicnewslite-jquery-navigation', get_template_directory_uri() .'/js/navigation.js', array('jquery') );
+	wp_enqueue_script( 'dynamicnewslite-jquery-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20160421' );
 	
 	// Passing Parameters to Navigation.js Javascript
 	wp_localize_script( 'dynamicnewslite-jquery-navigation', 'dynamicnews_menu_title', esc_html__( 'Menu', 'dynamic-news-lite' ) );
@@ -40,7 +47,7 @@ function dynamicnews_enqueue_scripts() {
 	// Register and enqueue sidebar.js
 	if ( true == $theme_options['sliding_sidebar'] ) {
 	
-		wp_enqueue_script( 'dynamicnewslite-jquery-sidebar', get_template_directory_uri() .'/js/sidebar.js', array('jquery') );
+		wp_enqueue_script( 'dynamicnewslite-jquery-sidebar', get_template_directory_uri() .'/js/sidebar.js', array( 'jquery' ), '20160421' );
 		wp_localize_script( 'dynamicnewslite-jquery-sidebar', 'dynamicnews_sidebar_title', esc_html__( 'Sidebar', 'dynamic-news-lite' ) );
 		
 	}
@@ -51,22 +58,8 @@ function dynamicnews_enqueue_scripts() {
 	}
 
 	// Register and Enqueue Font
-	wp_enqueue_style('dynamicnewslite-default-fonts', dynamicnews_fonts_url(), array(), null );
+	wp_enqueue_style( 'dynamicnewslite-default-fonts', dynamicnews_fonts_url(), array(), null );
 
-}
-
-
-// HTML5shiv for old IE
-add_action('wp_head', 'dynamicnews_enqueue_html5shiv');
-
-function dynamicnews_enqueue_html5shiv(){
-    
-	/* Embeds HTML5shiv to support HTML5 elements in older IE versions plus CSS Backgrounds */ ?>
-<!--[if lt IE 9]>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.min.js" type="text/javascript"></script>
-	<![endif]-->
-
-<?php
 }
 
 
@@ -148,6 +141,9 @@ function dynamicnews_setup() {
 	
 	// Register Social Icons Menu
 	register_nav_menu( 'social', esc_html__( 'Social Icons', 'dynamic-news-lite' ) );
+	
+	// Add Theme Support for Selective Refresh in Customizer
+	add_theme_support( 'customize-selective-refresh-widgets' );
 
 }
 
@@ -216,6 +212,37 @@ function dynamicnews_register_sidebars() {
 	
 }
 
+function update_profile_fields($contactmethods) {
+    unset($contactmethods['aim']);
+    unset($contactmethods['jabber']);
+    unset($contactmethods['yim']);
+    $contactmethods['twitter'] = 'Twitter';
+    $contactmethods['facebook'] = 'Facebook';
+    return $contactmethods;
+}
+add_filter('user_contactmethods','update_profile_fields',10,1);
+add_action( 'edit_user_profile', 'add_profile_fields' );
+function add_profile_fields( $user ) {
+?>
+    <h3>追加した項目</h3>
+    <table class="form-table">
+        <tr>
+            <th>自己紹介</th>
+            <td>
+                <textarea name="ex_profile" rows="10"><?php echo esc_attr( get_the_author_meta( 'ex_profile', $user->ID ) ); ?></textarea><br />
+                <span class="description">ここに自己紹介文を入力してください。</span>
+            </td>
+        </tr>
+    </table>
+<?php
+}
+add_action( 'edit_user_profile_update', 'save_profile_fields' );
+function save_profile_fields( $user_id ) {
+    if ( !current_user_can( 'edit_user', $user_id ) ) return false;
+    update_usermeta( $user_id, 'ex_profile', $_POST['ex_profile'] );
+}
+
+
 
 /*==================================== INCLUDE FILES ====================================*/
 
@@ -247,46 +274,3 @@ require( get_template_directory() . '/inc/widgets/widget-category-posts-single.p
 // Include Featured Content class
 require( get_template_directory() . '/inc/featured-content.php' );
 
-
-function contributors() {
-	global $wpdb;
-	
-	$authors = $wpdb->get_results ( "SELECT ID, user_nicename from $wpdb->users WHERE display_name <> 'admin' ORDER BY display_name" );
-	
-	foreach ( $authors as $author ) {
-		
-		echo "<li>";
-		echo "<a href=\"" . get_bloginfo ( 'url' ) . "/author/";
-		the_author_meta ( 'user_nicename', $author->ID );
-		echo "/\">";
-		echo get_avatar ( $author->ID );
-		echo "</a>";
-		echo '<div>';
-		echo "<a href=\"" . get_bloginfo ( 'url' ) . "/author/";
-		the_author_meta ( 'user_nicename', $author->ID );
-		echo "/\">";
-		the_author_meta ( 'display_name', $author->ID );
-		echo "</a>";
-		echo "<br />";
-		echo "Website: <a href=\"";
-		the_author_meta ( 'user_url', $author->ID );
-		echo "/\" target='_blank'>";
-		the_author_meta ( 'user_url', $author->ID );
-		echo "</a>";
-		echo "<br />";
-		echo "Twitter: <a href=\"http://twitter.com/";
-		the_author_meta ( 'twitter', $author->ID );
-		echo "\" target='_blank'>";
-		the_author_meta ( 'twitter', $author->ID );
-		echo "</a>";
-		echo "<br />";
-		echo "<a href=\"" . get_bloginfo ( 'url' ) . "/author/";
-		the_author_meta ( 'user_nicename', $author->ID );
-		echo "/\">Visit&nbsp;";
-		the_author_meta ( 'display_name', $author->ID );
-		echo "'s Profile Page";
-		echo "</a>";
-		echo "</div>";
-		echo "</li>";
-	}
-}

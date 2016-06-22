@@ -1,15 +1,15 @@
 === Social ===
 Plugin Name: Social
-Contributors: Social Media By Sygnoos
+Contributors: Social Media By Sygnoos, Support by Sygnoos
 Donate link: https://sygnoos.com/
-Tags: social, social follow, social following, social links, social media, social media buttons, social media icons, social media widget, social share, social sharing, social widget, social media, floating buttons, facebook, twitter, social bar, linkedin, pinterest,
+Tags: social, social follow, social following, social links, social media, social media buttons, social media icons, social media widget, social share, social sharing, social widget, social media, floating buttons, facebook, twitter, social bar, linkedin, pinterest, AddThis
 Requires at least: 3.8
-Tested up to: 4.5.1
+Tested up to: 4.5.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin provides you with many social networks, effects, dozens of themes and many other awesome options to make your page more shareable.
+Social plugin provides you with many social networks, effects, dozens of themes and many other awesome options to make your page more shareable.
 
 == Description ==
 
@@ -18,7 +18,7 @@ This plugin provides you with many social networks, effects, dozens of themes an
 This plugin gives you an opportunity to add social icons to your page and make it shareable. Our plugin provides you with 6 social networks, 12 panel Effects and many other awesome options that can make your work easier and more effective.
 In the Pro Version of this plugin you can have 11 social networks, 16 panel Effects and even more, you can choose the images you want to be shared on your website!
 
-You know what's the not-so-good aspect of blogging? It can be tedious and will consume our time quickly like a wildfire burning a forest. What more if you want to encourage readers to share some contents of your blogs to different social media platforms? Well, I have good news for you, it is now possible to do all those tasks with less hassle when using the Social Media Builder. Want to know more about it? I’d be happy to share the details.
+You know what's the not-so-good aspect of blogging? It can be tedious and will consume our time quickly like a wildfire burning a forest. What more if you want to encourage readers to share some contents of your blogs to different social media platforms? Well, I have good news for you, it is now possible to do all those tasks with less hassle when using the Social Media Builder. Want to know more about it? I'd be happy to share the details.
 
 https://www.youtube.com/watch?v=oCZzQ85Gnn4
 
@@ -107,6 +107,15 @@ Social MediaF.A.Q.= What is Social Media for? =* You can make your pages mor
 
 == Changelog ==
 
+= 1.2.0 =
+* Added new feature which will allow you to control spaceing between social buttons.
+
+= 1.1.9 =
+* Frontend bug fixed.
+
+= 1.1.8 =
+* Show share buttons on all posts.
+
 = 1.1.7 =
 * New option: Availability to define share text
 
@@ -168,4 +177,4 @@ Social MediaF.A.Q.= What is Social Media for? =* You can make your pages mor
 
 == Upgrade Notice ==
 
-Current version of Social Media is 1.1.6
+Current version of Social Media is 1.1.9

@@ -105,6 +105,13 @@ SGMBWidget.prototype.show = function(data, widgetCounter, hide, postImage)
 		else {
 			this.showButtonsOnEveryPostChecked(false);
 		}
+		if(data.options.showOnAllPost == 'on') {
+			this.disabledSelectPostsOption(true);
+		}
+		else {
+			this.disabledSelectPostsOption(false);
+		}
+		this.changeBetweenButtonsSize(data.options.betweenButtons);
 		jQuery('.sgmbWidget'+this.id+'-'+this.widgetCounter+' .jssocials-share').unbind('mouseenter mouseleave').hover(function() {
 			that.changeButtonsEffect(data.options.buttonsEffect);
 		});
@@ -293,6 +300,16 @@ SGMBWidget.prototype.showButtonsPositionChecked = function(inputValue)
 	}
 }
 
+SGMBWidget.prototype.disabledSelectPostsOption = function(inputValue) 
+{
+	if(inputValue == true) {
+		jQuery('.sgmb-select-posts select').attr('disabled', 'disabled');
+	}
+	else {
+		jQuery('.sgmb-select-posts select').removeAttr('disabled');
+	}
+}
+
 SGMBWidget.prototype.showButtonsOnEveryPostChecked = function(inputValue)
 {
 	if(inputValue == true) {
@@ -383,6 +400,16 @@ SGMBWidget.prototype.showCenter = function(inputValue)
 SGMBWidget.prototype.changeButtonSize = function(fontSize)
 {
 	jQuery('#sgmbShare'+this.id +'-'+this.widgetCounter).css({'font-size' : fontSize+"px"});
+}
+
+SGMBWidget.prototype.changeBetweenButtonsSize = function(betweenButtonsSize) 
+{
+	if (betweenButtonsSize) {
+		if (!betweenButtonsSize.match('px$')) {
+			betweenButtonsSize+='px';
+		}
+	}
+	jQuery('.jssocials-share').css({'margin-right' : betweenButtonsSize});
 }
 
 SGMBWidget.prototype.changeDropdownLabelSize = function(fontSize)

@@ -146,6 +146,16 @@
 						<?php endif; ?>>
 					</div>
 					<div class="sgmb-checkbox">
+						<span class="sgmb-label-checkbox">Space between buttons:</span>
+						<input class="sgmb-betweenButtons"  type='text' name="betweenButtons" 
+							<?php if( @$data['options']['betweenButtons'] == ''): ?>
+								value="1px" 
+							<?php else: ?>
+								value="<?php echo esc_attr(@$data['options']['betweenButtons']); ?>" 
+							<?php endif;?>
+						>
+					</div>
+					<div class="sgmb-checkbox">
 						<span class="sgmb-label-checkbox">Toggle dropdown to show buttons:</span>
 						<input type="checkbox" name="showButtonsAsList" id="checkbox-show-widget-in-dropdown"
 						<?php if(@$data['options']['showButtonsAsList'] == 'on'): ?>
@@ -199,7 +209,15 @@
 							<?php $sgmbPostionOnEveryPost = 'sgmbPostionOnEveryPost'; $sgmbPostion = array('Left', 'Center', 'Right'); 
 								echo SgmbAddNewSection::createSelect($sgmbPostionOnEveryPost, $sgmbPostion, @$data, $sgmbPostionOnEveryPost); ?>
 						</div>
-						<div class="sgmb-selctor-position-every-post"> 
+						<div class="sgmb-checkbox">
+							<span class="sgmb-label-checkbox">Show on all posts:</span>
+							<?php if(@$data['id'] != get_option( 'SGMB_SHARE_BUTTON_ID' )) { @$data['options']['showOnAllPost'] = ''; } ?>
+							<input type="checkbox" name="showOnAllPost" 
+							<?php if(@$data['options']['showOnAllPost'] == 'on'): ?>
+								checked 
+							<?php endif; ?>>
+						</div>
+						<div class="sgmb-selctor-position-every-post sgmb-select-posts"> 
 							<span class="sgmb-label-checkbox">Select Posts:</span>
 							<?php 
 								$args = array('posts_per_page' => -1); // Set to -1 to remove the limit, default 5

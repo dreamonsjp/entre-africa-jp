@@ -141,32 +141,3 @@
     font-size: 1.2em;
     line-height: 1.6em;
 }
-
-/* Display an Author List with Avatars in WordPress Contributors Page */
-#authorlist ul {
-	list-style: none;
-	width: 600px;
-	margin: 0;
-	padding: 0;
-}
-
-#authorlist li {
-	margin: 0 0 5px 0;
-	list-style: none;
-	height: 90px;
-	padding: 15px 0 15px 0;
-	border-bottom: 1px solid #ececec;
-}
-
-#authorlist img.photo {
-	width: 80px;
-	height: 80px;
-	float: left;
-	margin: 0 15px 0 0;
-	padding: 3px;
-	border: 1px solid #ececec;
-}
-
-#authorlist div.authname {
-	margin: 20px 0 0 10px;
-}

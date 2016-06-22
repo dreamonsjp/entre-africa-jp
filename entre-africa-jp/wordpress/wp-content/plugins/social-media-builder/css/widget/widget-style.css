@@ -37,7 +37,11 @@
 	padding: 30px;
 }
 
-.sgmb-social-img { display: inline-block !important; }
+.sgmb-social-img
+{
+	display: inline-block !important;
+	height: 1em !important;
+}
 
 .sgmbUpgrateProButton
 {
@@ -184,10 +188,10 @@
 
 .sgmb-buttons-position-div { margin-top: 20px; }
 
-.options-for-buttons-fixed-position 
-{ 
-	margin-top: 20px; 
-	margin-left: 239px; 
+.options-for-buttons-fixed-position
+{
+	margin-top: 20px;
+	margin-left: 239px;
 }
 
 .position-label-page
@@ -204,7 +208,7 @@
 	height: 32px;
 }
 
-.img-for-theme 
+.img-for-theme
 {
 	margin-left: 6px;
 	width: 36px;
@@ -247,7 +251,7 @@
 
 #theme-flat-radio { margin-bottom: 30px; }
 
-.label-dragOverToAdd 
+.label-dragOverToAdd
 {
 	display: block;
 	text-align: center;
@@ -278,13 +282,13 @@
 
 .fbLikeOption { margin-bottom: 20px; }
 
-.fbLikeOptionLabel 
-{ 
-	width: 145px; 
-	display: inline-block; 
+.fbLikeOptionLabel
+{
+	width: 145px;
+	display: inline-block;
 }
 
-.sgmb-label-checkbox 
+.sgmb-label-checkbox
 {
 	display: inline-block;
 	width: 235px;
@@ -303,7 +307,7 @@
 	}
 }
 
-.title-input 
+.title-input
 {
 	clear: both;
 	padding-top: 10px;
@@ -312,7 +316,7 @@
 
 .followUserName { width: 50%; }
 
-.border 
+.border
 {
 	border: solid;
 	border-radius: 50%;
@@ -356,7 +360,7 @@
 
 .dropdownWrapper-for-widget
 {
-	width:140px; 
+	width:140px;
 	display: none;
 }
 
@@ -370,8 +374,8 @@
 
 .sgmb-changeColor-label { width: 239px; }
 
-.dropdownWrapper-for-livePreview 
-{ 
+.dropdownWrapper-for-livePreview
+{
 	width:121px;
 	border: 1px solid #ccc;
 	padding: 10px;
@@ -397,10 +401,10 @@
 
 .sgmb-textOnEveryPost { width: 50%; }
 
-.title-crud 
-{ 
-	float:left; 
-	font-weight: 400 
+.title-crud
+{
+	float:left;
+	font-weight: 400
 }
 
 #default-message
@@ -410,7 +414,7 @@
 	margin-right: 2%;
 }
 
-.shortcode-title-inside-livePreview 
+.shortcode-title-inside-livePreview
 {
 	font-weight: bold;
 	font-size: 16px;
@@ -437,8 +441,8 @@
 
 .ui-widget-content { background: none; }
 
-.header input 
-{	
+.header input
+{
 	margin-top: 10px;
 	margin-bottom: 10px;
 	width: 791px;
