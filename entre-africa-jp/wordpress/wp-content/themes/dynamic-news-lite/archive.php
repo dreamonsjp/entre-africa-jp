@@ -11,8 +11,9 @@
 			<?php if ( function_exists( 'themezee_breadcrumbs' ) ) themezee_breadcrumbs(); ?>
 			
 			<header class="page-header">
+                <?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 				<?php 
-					the_archive_title( '<h1 class="archive-title">', '</h1>' ); 
+					//the_archive_title( '<h1 class="archive-title">', '</h1>' ); 
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header>

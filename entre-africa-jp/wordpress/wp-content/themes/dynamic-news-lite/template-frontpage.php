@@ -10,9 +10,14 @@ Template Name: Magazine Homepage
 ?>
 	
 	<div id="custom-header">
-		<img src="http://africa.blendsystems.jp/wp-content/uploads/2016/05/cropped-faces.jpg">
+		<?php /*<img src="http://africa.blendsystems.jp/wp-content/uploads/2016/05/cropped-faces.jpg">*/?>
 	</div>
+		<?php // Display Frontpage Slider widget 
+                if(is_active_sidebar('frontpage-slider')) : ?>
+		<?php dynamic_sidebar('frontpage-slider'); ?>
+		<?php endif;?>
 	<div id="wrap" class="container clearfix template-frontpage">
+
 		
 		<section id="content" class="primary" role="main">
 		

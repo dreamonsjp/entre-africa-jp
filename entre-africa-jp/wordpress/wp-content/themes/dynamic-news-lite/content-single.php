@@ -5,7 +5,7 @@
 		
 		<div class="entry-meta postmeta clearfix"><?php dynamicnews_display_postmeta(); ?></div>
 		
-		<?php dynamicnews_display_thumbnail_single(); ?>
+		<?php //dynamicnews_display_thumbnail_single(); ?>
 		
 		<div class="entry clearfix">
 			<?php the_content(); ?>

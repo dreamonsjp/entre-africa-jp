@@ -209,6 +209,18 @@ function dynamicnews_register_sidebars() {
 		'before_title' => '<h3 class="widgettitle">',
 		'after_title' => '</h3>',
 	));
+
+	// Register Slider
+	register_sidebar( array(
+		'name' => esc_html__( 'Frontpage Slider', 'dynamic-news-lite' ),
+		'id' => 'frontpage-slider',
+		'description' => esc_html__( 'Slider area of top page.', 'dynamic-news-lite' ),
+		'before_widget' => '<div id="%1$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3 class="widgettitle">',
+		'after_title' => '</h3>',
+	));
+
 	
 }
 
@@ -218,6 +230,8 @@ function update_profile_fields($contactmethods) {
     unset($contactmethods['yim']);
     $contactmethods['twitter'] = 'Twitter';
     $contactmethods['facebook'] = 'Facebook';
+    $contactmethods['instagram'] = 'Instagram';
+    $contactmethods['instagram_feed_wd'] = 'instagram_feed_wd';
     return $contactmethods;
 }
 add_filter('user_contactmethods','update_profile_fields',10,1);

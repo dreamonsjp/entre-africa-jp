@@ -112,9 +112,7 @@ class Dynamic_News_Category_Posts_Single_Widget extends WP_Widget {
 			while( $posts_query->have_posts() ) : $posts_query->the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'single-post' ); ?>>
-
 					<a href="<?php the_permalink() ?>" rel="bookmark"><?php the_post_thumbnail('featured_image'); ?></a>
-
 					<?php the_title( sprintf( '<h2 class="entry-title post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
 					<?php $this->display_postmeta( $settings ); ?>
