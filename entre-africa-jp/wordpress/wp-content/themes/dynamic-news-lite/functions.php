@@ -228,8 +228,11 @@ function update_profile_fields($contactmethods) {
     unset($contactmethods['aim']);
     unset($contactmethods['jabber']);
     unset($contactmethods['yim']);
+    $contactmethods['area'] = 'Area';
+    $contactmethods['face'] = 'Face';
     $contactmethods['twitter'] = 'Twitter';
     $contactmethods['facebook'] = 'Facebook';
+    $contactmethods['google'] = 'Google';
     $contactmethods['instagram'] = 'Instagram';
     $contactmethods['instagram_feed_wd'] = 'instagram_feed_wd';
     return $contactmethods;

@@ -1,4 +1,4 @@
-=== Social ===
+ === Social ===
 Plugin Name: Social
 Contributors: Social Media By Sygnoos, Support by Sygnoos
 Donate link: https://sygnoos.com/
@@ -71,6 +71,8 @@ Its user-friendly interface will allow even those 'non-techie' individuals to us
 * 11 Social Button Icons
 * 16 Themes
 * Insert Social Buttons on custom posts
+* Insert Socail Buttons on every page
+* Show Social buttons inside a popup
 
 <a href="https://sygnoos.com/wordpress-social-media/" target="_blank">Get Social Media PRO package</a>
 
@@ -106,6 +108,12 @@ Social MediaF.A.Q.= What is Social Media for? =* You can make your pages mor
 4.  Social Buttons visual screen
 
 == Changelog ==
+
+= 1.2.7 =
+* Bug fixes
+
+= 1.2.6 =
+* Post sharing improvements
 
 = 1.2.5 =
 * Stability improvements
@@ -192,4 +200,4 @@ Social MediaF.A.Q.= What is Social Media for? =* You can make your pages mor
 
 == Upgrade Notice ==
 
-Current version of Social Media is 1.2.4
+Current version of Social Media is 1.2.7
