@@ -85,7 +85,7 @@ if ( ! function_exists( 'dynamicnews_display_custom_header' ) ):
 						<?php /*
 						<img src="<?php echo get_header_image(); ?>" />
 						*/?>
-						<?php  if(!preg_match("/Android/", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPhone/", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPod/", $_SERVER['HTTP_USER_AGENT'])):?>
+						<?php  if(!preg_match("/Android/i", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPhone/i", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPod/i", $_SERVER['HTTP_USER_AGENT'])):?>
 							<img src="<?php echo get_header_image(); ?>" />
 						<?php else: ?>
 							<img src="<?php echo str_replace('.jpg', '_sp.jpg', get_header_image()); ?>" />
@@ -95,7 +95,11 @@ if ( ! function_exists( 'dynamicnews_display_custom_header' ) ):
 					
 				<?php else : ?>
 				
-					<img src="<?php echo get_header_image(); ?>" />
+						<?php  if(!preg_match("/Android/i", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPhone/i", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPod/i", $_SERVER['HTTP_USER_AGENT'])):?>
+							<img src="<?php echo get_header_image(); ?>" />
+						<?php else: ?>
+							<img src="<?php echo str_replace('.jpg', '_sp.jpg', get_header_image()); ?>" />
+						<?php endif;?>
 					
 				<?php endif; ?>
 			
