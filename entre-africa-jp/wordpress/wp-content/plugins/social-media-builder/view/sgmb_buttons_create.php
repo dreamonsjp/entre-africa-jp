@@ -229,13 +229,15 @@
 						</div>
 						<div class="sgmb-selctor-position-every-post sgmb-select-posts">
 							<span class="sgmb-label-checkbox">Select Posts:</span>
-							<?php
+							<input type="hidden" class="sgmb-all-selected-post" name="sgmb-all-selected-post" value="">
+							<?php 
+								$classes = 'selectOption';
 								$args = array('posts_per_page' => -1); // Set to -1 to remove the limit, default 5
 								$posts = get_posts($args);
 								foreach ($posts as $post) {
 									$postTitle[] = $post->post_title;
 								}
-								echo SgmbAddNewSection::createSelect('sgmbSelectedPosts[]', $postTitle, @$data, 'sgmbSelectedPosts');
+								echo SgmbAddNewSection::createMultiSelect('sgmbSelectedPosts', $postTitle, @$data, $classes);
 							?>
 						</div>
 					</div>
@@ -246,6 +248,18 @@
 						<?php if(@$data['options']['showButtonsOnCustomPost'] == 'on'): ?>
 							checked
 						<?php endif; ?>
+						<?php if(SGMB_PRO != 1): ?>
+							disabled>
+							<a href="<?php echo SGMB_PRO_URL; ?>" class="sgmb-pro-label-for-visual" target="_blanck">PRO</a>
+						<?php else: ?>
+							>
+						<?php endif; ?>
+					</div>
+					<div class="sgmb-checkbox">
+						<span class="sgmb-label-checkbox">Show social media on every page:</span>
+						<?php if(@$data['id'] != get_option('SGMB_SHARE_BUTTON_ID')) { @$data['options']['showButtonsOnEveryPost'] = ''; } ?>
+						<input type="checkbox" name="showButtonsOnCustomPost"
+						
 						<?php if(SGMB_PRO != 1): ?>
 							disabled>
 							<a href="<?php echo SGMB_PRO_URL; ?>" class="sgmb-pro-label-for-visual" target="_blanck">PRO</a>
@@ -284,6 +298,19 @@
 								>
 							<?php endif; ?>
  						</div>
+					</div>
+					<div class="sgmb-show-in-popup">
+						<span class="sgmb-label-checkbox">Show inside a popup:</span>
+						<input type="checkbox" name="showButtonsInPopup" 
+						<?php if(@$data['options']['showButtonsInPopup'] == 'on'): ?>
+							checked
+						<?php endif; ?>
+						<?php if(SGMB_PRO != 1): ?>
+							disabled>
+							<a href="<?php echo SGMB_PRO_URL; ?>" class="sgmb-pro-label-for-visual">PRO</a>
+						<?php else: ?>
+							>
+						<?php endif; ?>
 					</div>
 				</div>
 				<div id="tabs-3" >

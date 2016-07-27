@@ -79,10 +79,11 @@ class SgmbWidget extends WP_Widget
 		if($postImage == false) {
 			$postImage = $this->getPostImage();
 		}
+		$postUrl = get_permalink();
 		$data = $this->getData($args['id']);
 		if(!empty($data)) {
 			$html = $this->prepareWidget($data);
-			$html .=  $this->showWidget(json_encode($data), self::$widgetCounter, $postImage);
+			$html .=  $this->showWidget(json_encode($data), self::$widgetCounter, $postImage, $postUrl);
 			return $html;
 		}
 	}
@@ -160,12 +161,12 @@ class SgmbWidget extends WP_Widget
 		wp_enqueue_style('sgmb_drop_down_style');
 	}
 
-	public  function showWidget($data, $widgetCounter, $postImage)
+	public  function showWidget($data, $widgetCounter, $postImage, $postUrl)
 	{
 		$content = "<script type=\"text/javascript\">
 		jQuery(document).ready(function($){";
 		$content .= "var widget = new SGMBWidget();";
-		$content .= "widget.show($data, $widgetCounter, '', '$postImage');";
+		$content .= "widget.show($data, $widgetCounter, '', '$postImage', '$postUrl');";
 		$content .= " });</script>";
 		echo $content;
 	}
