@@ -2344,7 +2344,7 @@ embed, iframe, object, video {
 		box-sizing: border-box;
 	}
 	.wide-layout #wrap {
-		padding: 1.5em 1.5em 0;
+		padding: 1.5em 0.5em 0;
 	}
 }
 
