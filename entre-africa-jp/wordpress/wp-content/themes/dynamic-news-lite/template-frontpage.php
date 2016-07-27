@@ -8,10 +8,6 @@ Template Name: Magazine Homepage
 <?php // Get Theme Options from Database
 	$theme_options = dynamicnews_theme_options();
 ?>
-	
-	<div id="custom-header">
-		<?php /*<img src="http://africa.blendsystems.jp/wp-content/uploads/2016/05/cropped-faces.jpg">*/?>
-	</div>
 		<?php // Display Frontpage Slider widget 
                 if(is_active_sidebar('frontpage-slider')) : ?>
 		<?php dynamic_sidebar('frontpage-slider'); ?>

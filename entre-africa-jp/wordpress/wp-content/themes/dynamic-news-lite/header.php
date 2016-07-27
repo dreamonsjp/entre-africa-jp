@@ -37,14 +37,32 @@
 				<?php endif; ?>
 			
 			</div>
-			
+			<?php if($post->post_name=='top') :?>
 			<div id="header-content" class="clearfix">
 				<?php get_template_part('inc/header-content'); ?>
 			</div>
-
+			<div id="header-copytext" class="clearfix">
+				<div class="text-catch clearfix">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/text_catch.png" class="wp-post-image" alt="アフリカには、未来がある。" />
+				</div>
+				<div class="text-sub clearfix">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/text_sub.png" class="wp-post-image" alt="21世紀において最も人口が増えて成長の可能性があるアフリカ。そのアフリカの社会的課題を解決しながら持続的成長を支えることにチャレンジしている日本人の起業家たちがいる。" />
+				</div>
+			</div>
+			<?php endif;?>
 		</header>
 	
 	</div>
+	
+	<?php // Display Custom Header Image
+		if($post->post_name == 'top') :
+			dynamicnews_display_custom_header();
+		else :
+		?>
+		<div style="min-height:170px; background-color:#fff;"></div>
+		<?php 
+		endif;
+	?>
 	
 	<div id="navi-wrap">
 		<nav id="mainnav" class="container clearfix" role="navigation">
@@ -55,5 +73,3 @@
 		</nav>
 	</div>
 	
-	<?php // Display Custom Header Image
-		dynamicnews_display_custom_header(); ?>

@@ -338,9 +338,8 @@ add_action( 'dynamicnews_footer_text', 'dynamicnews_display_footer_text' );
 function dynamicnews_display_footer_text() { ?>
 
 	<span class="credit-link">
-		<?php printf( esc_html__( 'Powered by %1$s and %2$s.', 'dynamic-news-lite' ), 
-			'<a href="http://wordpress.org" title="WordPress">WordPress</a>',
-			'<a href="https://themezee.com/themes/dynamicnews/" title="Dynamic News WordPress Theme">Dynamic News</a>'
+		<?php printf( esc_html__( '&copy; %1$s %2$s', 'dynamic-news-lite' ), date('Y'),  
+			'アフリカ起業支援コンソーシアム'
 		); ?>
 	</span>
 
