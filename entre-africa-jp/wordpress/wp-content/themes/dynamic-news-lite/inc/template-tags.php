@@ -82,7 +82,15 @@ if ( ! function_exists( 'dynamicnews_display_custom_header' ) ):
 				if( $theme_options['custom_header_link'] <> '' ) : ?>
 				
 					<a href="<?php echo esc_url( $theme_options['custom_header_link'] ); ?>">
+						<?php /*
 						<img src="<?php echo get_header_image(); ?>" />
+						*/?>
+						<?php  if(!preg_match("/Android/", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPhone/", $_SERVER['HTTP_USER_AGENT']) && !preg_match("/iPod/", $_SERVER['HTTP_USER_AGENT'])):?>
+							<img src="<?php echo get_header_image(); ?>" />
+						<?php else: ?>
+							<img src="<?php echo str_replace('.jpg', '_sp.jpg', get_header_image()); ?>" />
+						<?php endif;?>
+						
 					</a>
 					
 				<?php else : ?>
