@@ -26,11 +26,7 @@ define('DB_NAME', 'entreafrica');
 define('DB_USER', 'entreafrica');
 
 /** MySQL database password */
-<<<<<<< HEAD
-define('DB_PASSWORD', 'GnhfVpB2jZFUFCda');
-=======
 define('DB_PASSWORD', 'PeQG8MWXdW4Q2FCG');
->>>>>>> branch 'master' of https://github.com/dreamonsjp/entre-africa-jp.git
 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');

@@ -203,7 +203,6 @@ input, textarea, select {
 	color: #333;
 }
 #logo .custom-logo {
-	margin: 0 1.5em 0 0;
 	padding: 0;
 	border: none;
 	vertical-align: top;
@@ -1579,6 +1578,9 @@ embed, iframe, object, video {
 }
 /* Smaller screens | <1120px */
 @media only screen and (max-width: 65em) {
+	body{
+		background-color:#FFFFFF;
+	}
 	#wrapper {
 		width: 96%;
 	}
@@ -2311,7 +2313,7 @@ embed, iframe, object, video {
 		max-width: 100%;
 	}
 	.wide-layout #header {
-		padding: 3em 4.5em;
+		padding: 2em 4.5em;
 	}
 	.wide-layout .container {
 		max-width: 1340px;
