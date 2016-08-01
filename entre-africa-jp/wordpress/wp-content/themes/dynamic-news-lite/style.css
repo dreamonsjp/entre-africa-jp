@@ -472,7 +472,6 @@ input, textarea, select {
 .widgettitle {
 	font-family: 'Droid Sans', Arial, Tahoma;
 	margin: -0.5em -0.5em 0.5em -0.5em;
-	text-transform: uppercase;
 	border-bottom:solid 3px #009c40;
 	padding-bottom:10px;
 	color:#494949;

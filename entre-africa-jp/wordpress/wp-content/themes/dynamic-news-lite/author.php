@@ -89,12 +89,17 @@ if ($user_data->instagram) {
 */?>
 </div>
 
+<div class="widget wdi_instagram_widget">
+<h2 class="widgettitle">Snapshots from Africa (Instagram)</h2>
 <?php // Instagram Feeds
 if ($user_data->instagram_feed_wd) {
   echo wdi_feed(array('id'=>$user_data->instagram_feed_wd)); 
 }
 ?>
+</div>
 			
+<div class="widget wdi_instagram_widget">
+<h2 class="widgettitle">Reports from Africa</h2>
 <?php // Post Archives ?>
 <?php if($posts) : the_post(); ?>
 <?php rewind_posts(); ?>
@@ -109,6 +114,7 @@ if ($user_data->instagram_feed_wd) {
 		endif; ?>
 		
 		<?php //comments_template(); ?>
+</div>
 		
 		</section>
 		

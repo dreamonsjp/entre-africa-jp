@@ -29,7 +29,7 @@ foreach($users as $user):
         echo '<figure class="eyecatch">';
         //echo get_avatar( $uid ,300 );
 	    $face_image = $userData->face?$userData->face:'/wp-content/uploads/2016/05/cropped-Dollarphotoclub_74502588-1-300x300.jpg';
-	    echo '<a href="'.get_bloginfo(url).'/?author='.$uid.'">';
+	    echo '<a href="'.get_bloginfo(url).'/author/'.$userData->user_login.'">';
 	        echo '<img src="'.$face_image.'" width="150" height="150" alt="'.$userData->display_name.'" class="avatar avatar-150 photo">';
             echo '<p class="name">'.$user->display_name.'</p>';
 	    echo '</a>';

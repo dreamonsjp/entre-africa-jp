@@ -26,7 +26,7 @@
 	
 		<header id="header" class="container clearfix" role="banner">
 
-			<div id="logo" class="clearfix">
+			<div id="logo" class="clearfix"<?php if($post->post_name!='top') :?> style="margin-left:50%;"<?php endif;?>>
 			
 				<?php dynamicnews_site_logo(); ?>
 				<?php dynamicnews_site_title(); ?>
