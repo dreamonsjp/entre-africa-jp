@@ -8,6 +8,7 @@
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
 <?php wp_head(); ?>
+<script src="https://use.fontawesome.com/7307b3db32.js"></script>
 </head>
 
 <body <?php body_class(); ?>>
@@ -24,9 +25,9 @@
 		
 	<div id="header-wrap">
 	
-		<header id="header" class="container clearfix" role="banner">
+		<header id="header" class="container clearfix" role="banner"<?php if($post->post_name!='top') :?> style="position:relative; "<?php endif;?>>
 
-			<div id="logo" class="clearfix"<?php if($post->post_name!='top') :?> style="margin-left:50%;"<?php endif;?>>
+			<div id="logo" class="clearfix">
 			
 				<?php dynamicnews_site_logo(); ?>
 				<?php dynamicnews_site_title(); ?>
@@ -57,10 +58,6 @@
 	<?php // Display Custom Header Image
 		if($post->post_name == 'top') :
 			dynamicnews_display_custom_header();
-		else :
-		?>
-		<div style="min-height:170px; background-color:#fff;"></div>
-		<?php 
 		endif;
 	?>
 	

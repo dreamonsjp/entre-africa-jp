@@ -235,6 +235,7 @@ function update_profile_fields($contactmethods) {
     $contactmethods['google'] = 'Google';
     $contactmethods['instagram'] = 'Instagram';
     $contactmethods['instagram_feed_wd'] = 'instagram_feed_wd';
+    $contactmethods['awardees'] = 'Awardees';
     return $contactmethods;
 }
 add_filter('user_contactmethods','update_profile_fields',10,1);
@@ -291,3 +292,4 @@ require( get_template_directory() . '/inc/widgets/widget-category-posts-single.p
 // Include Featured Content class
 require( get_template_directory() . '/inc/featured-content.php' );
 
+remove_filter('comment_text', 'make_clickable', 9);

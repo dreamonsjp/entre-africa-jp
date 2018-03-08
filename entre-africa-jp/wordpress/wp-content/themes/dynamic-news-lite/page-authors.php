@@ -20,7 +20,7 @@ Template Name:Challengers
 
 <div class="writers">
 <?php
-$users =get_users( array('orderby'=>ID,'order'=>ASC) );
+$users =get_users( array('exclude'=>array(18,7,12),'orderby'=>ID,'order'=>ASC) );
 foreach($users as $user):
     $uid =  $user->ID;
     if($uid <= 3) continue;

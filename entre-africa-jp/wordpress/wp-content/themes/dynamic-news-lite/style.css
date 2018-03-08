@@ -496,7 +496,6 @@ input, textarea, select {
 }
 .widget a:link, .widget a:visited  {
 	text-decoration: none;
-	color: #df0011;
 }
 .widget a:hover, .widget a:active {
 	text-decoration: underline;
@@ -2386,6 +2385,9 @@ embed, iframe, object, video {
 	.flat-layout #mainnav-menu .submenu-dropdown-toggle {
 		padding: 0.7em 1.2em;
 	}
+	.writer-profile {
+		width: 160px !important;
+	}
 }
 
 /*--------------------------------------------------------------
@@ -2425,9 +2427,9 @@ embed, iframe, object, video {
     overflow:hidden;
 }
 .writer-profile{
-    width: 18%;
+    width: 160px;
     /*min-height: 350px;*/
-    margin:1%;
+    margin:0;
     float:left;
 }
 .writer-profile .name{
@@ -2504,4 +2506,7 @@ div#meta-status-badge-container ul.avatars img.avatar {
 .author-profile {
 	line-height: 1.4em;	
 }
+
+.widget_authors > ul > li {
+	margin-bottom: 0 !important;
 }
