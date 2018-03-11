@@ -119,14 +119,19 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jp-connect-full__step-header-logos {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-pack: center;
-      justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .jp-connect-full__step-header-logos .jp-connect-full__svg-jetpack,
@@ -192,16 +197,6 @@ https://github.com/thoughtbot/bourbon
   margin: 0;
 }
 
-.jp-connect-full__button-container .dops-button.is-primary {
-  background: #00BE28;
-  border-color: #00a523;
-}
-
-.jp-connect-full__button-container .dops-button.is-primary:hover, .jp-connect-full__button-container .dops-button.is-primary:focus {
-  background: #00a523;
-  border-color: #008b1d;
-}
-
 .jp-connect-full__help-button {
   display: inline-block;
   text-decoration: none;
@@ -252,14 +247,18 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jp-wpcom-connect__inner-container {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  -ms-flex-pack: left;
-      justify-content: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
 }
 
 .jp-wpcom-connect__content-container {
@@ -319,26 +318,19 @@ https://github.com/thoughtbot/bourbon
   margin: 0.3125rem 0;
 }
 
-.jp-banner__button-container .dops-button.is-primary {
-  background: #00BE28;
-  border-color: #00a523;
-}
-
-.jp-banner__button-container .dops-button.is-primary:hover, .jp-banner__button-container .dops-button.is-primary:focus {
-  background: #00a523;
-  border-color: #008b1d;
-}
-
 .jp-wpcom-connect__vertical-nav {
   background-color: #F3F6F8;
 }
 
 @media (min-width: 600px) {
   .jp-wpcom-connect__vertical-nav {
-    -ms-flex-direction: column;
-        flex-direction: column;
-    -ms-flex-pack: start;
-        justify-content: flex-start;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
   }
 }
 
@@ -358,12 +350,16 @@ https://github.com/thoughtbot/bourbon
 
 @media (min-width: 600px) {
   .vertical-menu__feature-item {
+    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: row;
-        flex-direction: row;
-    -ms-flex-align: center;
-        align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     border: none;
     padding: 0.5rem;
     border-bottom: 1px solid #c8d7e1;
@@ -384,7 +380,7 @@ https://github.com/thoughtbot/bourbon
     color: #2e4453;
   }
   .vertical-menu__feature-item-is-selected.jp-feature-intro {
-    border-left: 3px solid #00BE28;
+    border-left: 3px solid #8CC258;
   }
   .vertical-menu__feature-item-icon {
     width: 1.25rem;
@@ -399,7 +395,7 @@ https://github.com/thoughtbot/bourbon
     fill: #3D596D;
   }
   .vertical-menu__feature-item-is-selected.jp-feature-intro svg {
-    fill: #00BE28;
+    fill: #8CC258;
   }
   .vertical-menu__feature-item-is-selected.wp-app-logo svg path {
     fill: #3D596D;

@@ -108,10 +108,6 @@ function wpcf7_validate_configuration() {
 		WPCF7_VALIDATE_CONFIGURATION );
 }
 
-function wpcf7_autop_or_not() {
-	return (bool) apply_filters( 'wpcf7_autop_or_not', WPCF7_AUTOP );
-}
-
 function wpcf7_load_js() {
 	return apply_filters( 'wpcf7_load_js', WPCF7_LOAD_JS );
 }
@@ -192,8 +188,7 @@ function wpcf7_register_post_types() {
 function wpcf7_version( $args = '' ) {
 	$defaults = array(
 		'limit' => -1,
-		'only_major' => false,
-	);
+		'only_major' => false );
 
 	$args = wp_parse_args( $args, $defaults );
 
@@ -253,13 +248,13 @@ function wpcf7_enctype_value( $enctype ) {
 
 function wpcf7_rmdir_p( $dir ) {
 	if ( is_file( $dir ) ) {
-		if ( ! $result = unlink( $dir ) ) {
-			$stat = stat( $dir );
+		if ( ! $result = @unlink( $dir ) ) {
+			$stat = @stat( $dir );
 			$perms = $stat['mode'];
-			chmod( $dir, $perms | 0200 ); // add write for owner
+			@chmod( $dir, $perms | 0200 ); // add write for owner
 
-			if ( ! $result = unlink( $dir ) ) {
-				chmod( $dir, $perms );
+			if ( ! $result = @unlink( $dir ) ) {
+				@chmod( $dir, $perms );
 			}
 		}
 
@@ -270,7 +265,7 @@ function wpcf7_rmdir_p( $dir ) {
 		return false;
 	}
 
-	if ( $handle = opendir( $dir ) ) {
+	if ( $handle = @opendir( $dir ) ) {
 		while ( false !== ( $file = readdir( $handle ) ) ) {
 			if ( $file == "." || $file == ".." ) {
 				continue;
@@ -282,12 +277,7 @@ function wpcf7_rmdir_p( $dir ) {
 		closedir( $handle );
 	}
 
-	if ( false !== ( $files = scandir( $dir ) )
-	&& ! array_diff( $files, array( '.', '..' ) ) ) {
-		return rmdir( $dir );
-	}
-
-	return false;
+	return @rmdir( $dir );
 }
 
 /* From _http_build_query in wp-includes/functions.php */

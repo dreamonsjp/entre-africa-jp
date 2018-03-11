@@ -59,7 +59,7 @@ class WPCOM_Widget_Goodreads extends WP_Widget {
 				echo '<p>' . sprintf(
 					__( 'You need to enter your numeric user ID for the <a href="%1$s">Goodreads Widget</a> to work correctly. <a href="%2$s" target="_blank">Full instructions</a>.', 'jetpack' ),
 					esc_url( admin_url( 'widgets.php' ) ),
-					'https://support.wordpress.com/widgets/goodreads-widget/#goodreads-user-id'
+					'http://support.wordpress.com/widgets/goodreads-widget/#goodreads-user-id'
 				) . '</p>';
 				echo $args['after_widget'];
 			}
@@ -88,13 +88,12 @@ class WPCOM_Widget_Goodreads extends WP_Widget {
 	}
 
 	function goodreads_user_id_exists( $user_id ) {
-		$url = "https://www.goodreads.com/user/show/$user_id/";
-		$response = wp_remote_head( $url, array( 'httpversion' => '1.1', 'timeout' => 3, 'redirection' => 2 ) );
-		if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+		$url = "http://www.goodreads.com/user/show/$user_id/";
+		$response = wp_remote_head( $url, array( 'httpversion'=>'1.1', 'timeout'=>3, 'redirection'=> 2 ) );
+		if ( wp_remote_retrieve_response_code( $response ) === 200 )
 			return true;
-		} else {
+		else
 			return false;
-		}
 	}
 
 	function update( $new_instance, $old_instance ) {

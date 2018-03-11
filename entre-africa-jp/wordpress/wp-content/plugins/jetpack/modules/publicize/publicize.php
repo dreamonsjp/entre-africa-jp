@@ -260,7 +260,7 @@ abstract class Publicize_Base {
 
 	/**
 	* Fires when a post is saved, checks conditions and saves state in postmeta so that it
-	* can be picked up later by @see ::publicize_post() on WordPress.com codebase.
+	* can be picked up later by @see ::publicize_post()
 	*/
 	function save_meta( $post_id, $post ) {
 		$cron_user = null;

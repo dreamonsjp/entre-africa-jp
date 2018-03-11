@@ -153,16 +153,7 @@
 		} );
 
 		components = $.trim( components.join( ' ' ) );
-		components = '[' + components + ']';
-
-		var content = scope.find( ':input[name="content"]' ).val();
-		content = $.trim( content );
-
-		if ( content ) {
-			components += ' ' + content + ' [/' + tagType + ']';
-		}
-
-		return components;
+		return '[' + components + ']';
 	};
 
 	wpcf7.taggen.normalize = function( $input ) {

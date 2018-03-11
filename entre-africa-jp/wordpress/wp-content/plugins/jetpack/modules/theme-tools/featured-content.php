@@ -172,10 +172,9 @@ class Featured_Content {
 		}
 
 		$featured_posts = get_posts( array(
-			'include'          => $post_ids,
-			'posts_per_page'   => count( $post_ids ),
-			'post_type'        => self::$post_types,
-			'suppress_filters' => false,
+			'include'        => $post_ids,
+			'posts_per_page' => count( $post_ids ),
+			'post_type'      => self::$post_types,
 		) );
 
 		return $featured_posts;
@@ -231,7 +230,6 @@ class Featured_Content {
 		$featured = get_posts( array(
 			'numberposts' => $quantity,
 			'post_type'   => self::$post_types,
-			'suppress_filters' => false,
 			'tax_query'   => array(
 				array(
 					'field'    => 'term_id',
@@ -461,7 +459,7 @@ class Featured_Content {
 	 */
 	public static function customize_register( $wp_customize ) {
 		$wp_customize->add_section( 'featured_content', array(
-			'title'          => esc_html__( 'Featured Content', 'jetpack' ),
+			'title'          => __( 'Featured Content', 'jetpack' ),
 			'description'    => sprintf( __( 'Easily feature all posts with the <a href="%1$s">"featured" tag</a> or a tag of your choice. Your theme supports up to %2$s posts in its featured content area.', 'jetpack' ), admin_url( '/edit.php?tag=featured' ), absint( self::$max_posts ) ),
 			'priority'       => 130,
 			'theme_supports' => 'featured-content',
@@ -489,20 +487,20 @@ class Featured_Content {
 
 		// Add Featured Content controls.
 		$wp_customize->add_control( 'featured-content[tag-name]', array(
-			'label'          => esc_html__( 'Tag name', 'jetpack' ),
+			'label'          => __( 'Tag name', 'jetpack' ),
 			'section'        => 'featured_content',
 			'theme_supports' => 'featured-content',
 			'priority'       => 20,
 		) );
 		$wp_customize->add_control( 'featured-content[hide-tag]', array(
-			'label'          => esc_html__( 'Do not display tag in post details and tag clouds.', 'jetpack' ),
+			'label'          => __( 'Do not display tag in post details and tag clouds.', 'jetpack' ),
 			'section'        => 'featured_content',
 			'theme_supports' => 'featured-content',
 			'type'           => 'checkbox',
 			'priority'       => 30,
 		) );
 		$wp_customize->add_control( 'featured-content[show-all]', array(
-			'label'          => esc_html__( 'Also display tagged posts outside the Featured Content area.', 'jetpack' ),
+			'label'          => __( 'Also display tagged posts outside the Featured Content area.', 'jetpack' ),
 			'section'        => 'featured_content',
 			'theme_supports' => 'featured-content',
 			'type'           => 'checkbox',

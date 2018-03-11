@@ -112,10 +112,11 @@ class Jetpack_Comments extends Highlander_Comments_Base {
 
 		// Selfishly remove everything from the existing comment form
 		remove_all_actions( 'comment_form_before' );
+		remove_all_actions( 'comment_form_after' );
 
 		// Selfishly add only our actions back to the comment form
 		add_action( 'comment_form_before', array( $this, 'comment_form_before' ) );
-		add_action( 'comment_form_after',  array( $this, 'comment_form_after'  ), 1 ); // Set very early since we remove everything outputed before our action.
+		add_action( 'comment_form_after', array( $this, 'comment_form_after' ) );
 
 		// Before a comment is posted
 		add_action( 'pre_comment_on_post', array( $this, 'pre_comment_on_post' ), 1 );

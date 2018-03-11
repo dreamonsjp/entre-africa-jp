@@ -67,6 +67,7 @@ class Jetpack_JITM {
 	 */
 	function prepare_jitms( $screen ) {
 		if ( ! in_array( $screen->id, array(
+			'toplevel_page_jetpack',
 			'jetpack_page_stats',
 			'jetpack_page_akismet-key-config',
 			'admin_page_jetpack_modules'
@@ -137,13 +138,12 @@ class Jetpack_JITM {
 	function ajax_message() {
 		$message_path = $this->get_message_path();
 		$query_string = _http_build_query( $_GET, '', ',' );
-		$current_screen = wp_unslash( $_SERVER['REQUEST_URI'] );
+
 		?>
 		<div class="jetpack-jitm-message"
 		     data-nonce="<?php echo wp_create_nonce( 'wp_rest' ) ?>"
 		     data-message-path="<?php echo esc_attr( $message_path ) ?>"
 		     data-query="<?php echo urlencode_deep( $query_string ) ?>"
-		     data-redirect="<?php echo urlencode_deep( $current_screen ) ?>"
 		></div>
 		<?php
 	}
@@ -175,13 +175,7 @@ class Jetpack_JITM {
 		wp_style_add_data( 'jetpack-jitm-css', 'suffix', $min );
 		wp_enqueue_style( 'jetpack-jitm-css' );
 
-		wp_enqueue_script(
-			'jetpack-jitm-new',
-			Jetpack::get_file_url_for_environment( '_inc/build/jetpack-jitm.min.js', '_inc/jetpack-jitm.js' ),
-			array( 'jquery' ),
-			JETPACK__VERSION,
-			true
-		);
+		wp_enqueue_script( 'jetpack-jitm-new', plugins_url( '_inc/jetpack-jitm.js', JETPACK__PLUGIN_FILE ), array( 'jquery' ), JETPACK__VERSION, true );
 		wp_localize_script( 'jetpack-jitm-new', 'jitm_config', array(
 			'api_root' => esc_url_raw( rest_url() ),
 		) );
@@ -196,12 +190,7 @@ class Jetpack_JITM {
 	 * @return bool Always true
 	 */
 	function dismiss( $id, $feature_class ) {
-		JetpackTracking::record_user_event( 'jitm_dismiss_client', array(
-			'jitm_id' => $id,
-			'feature_class' => $feature_class,
-		) );
-
-
+		// todo: track dismissal of id and feature class?
 		$hide_jitm = Jetpack_Options::get_option( 'hide_jitm' );
 		if ( ! is_array( $hide_jitm ) ) {
 			$hide_jitm = array();
@@ -255,6 +244,7 @@ class Jetpack_JITM {
 		// build our jitm request
 		$path = add_query_arg( array(
 			'external_user_id' => urlencode_deep( $user->ID ),
+			'user_roles'       => urlencode_deep( implode( ',', $user->roles ) ),
 			'query_string'     => urlencode_deep( $query ),
 		), sprintf( '/sites/%d/jitm/%s', $site_id, $message_path ) );
 
@@ -317,8 +307,8 @@ class Jetpack_JITM {
 
 			$dismissed_feature = isset( $hidden_jitms[ $envelope->feature_class ] ) && is_array( $hidden_jitms[ $envelope->feature_class ] ) ? $hidden_jitms[ $envelope->feature_class ] : null;
 
-			// if the this feature class has been dismissed and the request has not passed the ttl, skip it as it's been dismissed
-			if ( is_array( $dismissed_feature ) && ( time() - $dismissed_feature['last_dismissal'] < $envelope->expires || $dismissed_feature['number'] >= $envelope->max_dismissal ) ) {
+			// if the this feature class has been dismissed and the request has not expired from the cache, skip it as it's been dismissed
+			if ( is_array( $dismissed_feature ) && $from_cache && time() - $dismissed_feature['last_dismissal'] < $expiration + 60 ) {
 				unset( $envelopes[ $idx ] );
 				continue;
 			}

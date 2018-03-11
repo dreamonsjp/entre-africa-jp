@@ -102,9 +102,9 @@ function wpcf7_select_form_tag_handler( $tag ) {
 
 		if ( $hangover ) {
 			if ( $multiple ) {
-				$selected = in_array( $value, (array) $hangover, true );
+				$selected = in_array( esc_sql( $value ), (array) $hangover );
 			} else {
-				$selected = ( $hangover === $value );
+				$selected = ( $hangover == esc_sql( $value ) );
 			}
 		} else {
 			if ( ! $shifted && in_array( (int) $key + 1, (array) $defaults ) ) {

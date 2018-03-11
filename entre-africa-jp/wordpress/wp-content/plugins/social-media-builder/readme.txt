@@ -5,7 +5,7 @@ Author: Social Media By Sygnoos
 Donate link: https://sygnoos.com/
 Tags: social, share, social media, social buttons, share buttons
 Requires at least: 3.8
-Tested up to: 4.8.3
+Tested up to: 4.8.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -152,9 +152,6 @@ wp-sgmb@sygnoos.com.
 4.  Social Buttons visual screen
 
 == Changelog ==
-
-= 2.1.0 =
-* Bug fixed connected to fonts inside the popup.
 
 = 2.0.9 =
 * Review link fixed.

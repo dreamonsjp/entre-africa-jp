@@ -319,7 +319,6 @@ class Jetpack_Testimonial {
 				'thumbnail',
 				'page-attributes',
 				'revisions',
-				'excerpt',
 			),
 			'rewrite' => array(
 				'slug'       => 'testimonial',

@@ -9,10 +9,6 @@ class WPCOM_JSON_API_List_Comments_Walker extends Walker {
 	);
 
 	public function start_el( &$output, $object, $depth = 0, $args = array(), $current_object_id = 0 ) {
-		if ( ! is_array( $output ) ) {
-			$output = array();
-		}
-
 		$output[] = $object->comment_ID;
 	}
 
@@ -177,7 +173,7 @@ class WPCOM_JSON_API_List_Comments_Endpoint extends WPCOM_JSON_API_Comment_Endpo
 			}
 			break;
 		default :
-			if ( ! current_user_can( 'edit_posts' ) ) {
+			if ( !current_user_can( 'moderate_comments' ) ) {
 				return new WP_Error( 'unauthorized', 'User cannot read non-approved comments', 403 );
 			}
 			if ( 'unapproved' === $args['status'] ) {

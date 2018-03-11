@@ -24,10 +24,9 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 			'trackback' => 'The comment is a trackback.',
 			'pingback'  => 'The comment is a pingback.',
 		),
-		'like_count'   => '(int) The number of likes for this comment.',
-		'i_like'       => '(bool) Does the current user like this comment?',
-		'meta'         => '(object) Meta data',
-		'can_moderate' => '(bool) Whether current user can moderate the comment.',
+		'like_count'     => '(int) The number of likes for this comment.',
+		'i_like'         => '(bool) Does the current user like this comment?',
+		'meta' => '(object) Meta data',
 	);
 
 	// public $response_format =& $this->comment_object_format;
@@ -75,9 +74,9 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 		case 'display' :
 			if ( 'approved' !== $status ) {
 				$current_user_id = get_current_user_id();
-				$user_can_read_comment = false;
+				$user_can_read_coment = false;
 				if ( $current_user_id && $comment->user_id && $current_user_id == $comment->user_id ) {
-					$user_can_read_comment = true;
+					$user_can_read_coment = true;
 				} elseif (
 					$comment->comment_author_email && $comment->comment_author
 				&&
@@ -89,12 +88,12 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 				&&
 					$this->api->token_details['user']['display_name'] === $comment->comment_author
 				) {
-					$user_can_read_comment = true;
+					$user_can_read_coment = true;
 				} else {
-					$user_can_read_comment = current_user_can( 'edit_posts' );
+					$user_can_read_coment = current_user_can( 'edit_comment', $comment->comment_ID );
 				}
 
-				if ( !$user_can_read_comment ) {
+				if ( !$user_can_read_coment ) {
 					return new WP_Error( 'unauthorized', 'User cannot read unapproved comment', 403 );
 				}
 			}
@@ -192,9 +191,6 @@ abstract class WPCOM_JSON_API_Comment_Endpoint extends WPCOM_JSON_API_Endpoint {
 						'likes'   => (string) $this->links->get_comment_link( $this->api->get_blog_id_for_output(), $comment->comment_ID, 'likes/' ),
 					),
 				);
-				break;
-			case 'can_moderate':
-				$response[ $key ] = (bool) current_user_can( 'edit_comment', $comment_id );
 				break;
 			}
 		}

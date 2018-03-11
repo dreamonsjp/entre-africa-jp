@@ -164,6 +164,7 @@ https://github.com/thoughtbot/bourbon
 
 .jitm-banner.jitm-card {
   border-right: 4px solid;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   padding: 0.75rem 0.75rem 0.75rem 0.375rem;
@@ -231,9 +232,11 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jitm-banner.jitm-card .jitm-card__link-indicator {
-  -ms-flex-align: center;
-      align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #0087be;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
@@ -260,6 +263,7 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jitm-banner__icons {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
@@ -293,8 +297,9 @@ https://github.com/thoughtbot/bourbon
 
 @media (min-width: 481px) {
   .jitm-banner__icons {
-    -ms-flex-align: center;
-        align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .jitm-banner__icons .jitm-banner__icon {
     display: none;
@@ -305,6 +310,7 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jitm-banner__icon-plan {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-left: 1rem;
@@ -329,23 +335,27 @@ https://github.com/thoughtbot/bourbon
 .jitm-banner__icon-plan .jp-emblem svg {
   height: 2rem;
   width: 2rem;
-  fill: #00BE28;
+  fill: #8cc258;
 }
 
 @media (min-width: 481px) {
   .jitm-banner__icon-plan {
-    -ms-flex-align: center;
-        align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 
 .jitm-banner__content {
-  -ms-flex-align: center;
-      align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-positive: 1;
-      flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
@@ -358,8 +368,9 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jitm-banner__info {
-  -ms-flex-positive: 1;
-      flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   line-height: 1.4;
 }
 
@@ -404,10 +415,12 @@ https://github.com/thoughtbot/bourbon
 }
 
 .jitm-banner__action .jitm-banner__prices {
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .jitm-banner__action .jitm-banner__prices .dops-plan-price {
@@ -433,8 +446,9 @@ https://github.com/thoughtbot/bourbon
     margin-top: 2.5rem;
   }
   .jitm-banner__action .jitm-banner__prices {
-    -ms-flex-pack: end;
-        justify-content: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
     text-align: left;
   }
 }
